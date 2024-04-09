@@ -4,7 +4,7 @@ Rede social onde o usuário pode pesquisar um álbum de música, escrever uma re
 
 ## :technologist: Membros da equipe
 
-Matrícula, nome e curso dos participantes.
+428968 - Mateus Felipe Nobre, Design Digital
 402751 - Thais Alves Batista, Design Digital
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
