@@ -42,7 +42,8 @@ Axios
 
 **Backend:**
 
-
+Node.JS
+Express
 
 
 ## :shipit: Operações implementadas para cada entidade da aplicação
