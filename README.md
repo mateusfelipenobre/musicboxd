@@ -8,21 +8,21 @@ Matrícula, nome e curso dos participantes.
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
-Usuário não registrado
+-Usuário não registrado
 
-Usuário registrado
+-Usuário registrado
 
-Administrador
+-Administrador
 
 
 
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
-Usuário
+-Usuário
 
-Álbum
+-Álbum
 
-Resenha
+-Resenha
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
@@ -32,12 +32,6 @@ Usuário registrado: pode listar os álbuns e seus detalhes, assim como usuário
 
 O adminstrador: pode adicionar, remover e editar os álbuns.
 
-----
-
-:warning::warning::warning: As informações a seguir devem ser enviadas juntamente com a versão final do projeto. :warning::warning::warning:
-
-
-----
 
 ## :desktop_computer: Tecnologias e frameworks utilizados
 
@@ -56,11 +50,11 @@ Axios
 
 | Entidade| Criação | Leitura | Atualização | Remoção |
 | --- | --- | --- | --- | --- |
-| Entidade 1 | X |  X  |  | X |
-| Entidade 2 | X |    |  X | X |
-| Entidade 3 | X |    |  |  |
+| Álbum | X |  X  |  | X |
+| Resenha | X |  x  |  X | X |
+| Usuário |  |    |  |  |
 
-> Lembre-se que é necessário implementar o CRUD de pelo menos duas entidades.
+
 
 ## :neckbeard: Rotas da API REST utilizadas
 
