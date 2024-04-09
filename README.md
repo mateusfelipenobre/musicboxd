@@ -50,8 +50,8 @@ Axios
 
 | Entidade| Criação | Leitura | Atualização | Remoção |
 | --- | --- | --- | --- | --- |
-| Álbum | X |  X  |  | X |
-| Resenha | X |  x  |  X | X |
+| Álbum | X |  X  | X | X |
+| Resenha | X |  X  |  X | X |
 | Usuário |  |    |  |  |
 
 
