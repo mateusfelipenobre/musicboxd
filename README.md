@@ -60,5 +60,10 @@ Axios
 
 | Método HTTP | URL |
 | --- | --- |
-| GET | api/entidade1/|
-| POST | api/entidade2 |
+| POST | auth/local|
+| GET | /user/me|
+| GET | API/Álbuns|
+| GET | /api/álbuns/{id}|
+| POST | /api/álbuns |
+| PUT | /api/álbuns/{id} |
+| Delete | /api/Álbuns/{id} |
