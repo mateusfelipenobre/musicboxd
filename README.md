@@ -1,6 +1,6 @@
-# :checkered_flag: NOME DO PROJETO
+# :checkered_flag: MusicBoxd
 
-Breve descrição do que o seu projeto faz.
+Rede social onde o usuário pode pesquisar um álbum de música, escrever uma resenha, editá-la e apagá-la caso queira.
 
 ## :technologist: Membros da equipe
 
@@ -8,18 +8,24 @@ Matrícula, nome e curso dos participantes.
 
 ## :people_holding_hands: Papéis ou tipos de usuário da aplicação
 
-Informe aqui os tipos de usuário que irão interagir com a aplicação. Ex: administrador, locador, locatario, usuário não logado.
+Usuário não registrado
+Usuário registrado
+Administrador
 
-> Tenha em mente que obrigatoriamente a aplicação deve possuir funcionalidades acessíveis a todos os tipos de usuário e outra funcionalidades restritas a certos tipos de usuários.
 
 ## :spiral_calendar: Entidades ou tabelas do sistema
 
-Liste as principais entidades do sistema.
+Usuário
+Álbum
+Resenha
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
-Descreve ou liste brevemente as principais funcionalidades da aplicação que será desenvolvida. Destaque a funcionalidades que serão acessévies a todos os usuários e aquelas restriras a usuários logados.
+Usuário não registrado: poderão ver os álbuns e as resenhas feitos por usuários registrados.
 
+Usuário registrado: pode listar os álbuns e seus detalhes, assim como usuários não registrados, porém podem escrever resenhas sobre os álbuns.
+
+O adminstrador: pode adicionar, remover e editar os álbuns.
 
 ----
 
@@ -32,11 +38,12 @@ Descreve ou liste brevemente as principais funcionalidades da aplicação que se
 
 **Frontend:**
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
+VueJS v3.0, Vue-Router e Pinia.
+Axios
 
 **Backend:**
 
-Lista as tecnologias, frameworks e bibliotecas utilizados.
+
 
 
 ## :shipit: Operações implementadas para cada entidade da aplicação
