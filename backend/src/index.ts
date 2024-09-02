@@ -1,5 +1,6 @@
 import express from 'express';
 import userRoutes from './routes/userRoutes'
+import { AppDataSource } from './DataSource'
 
 const app = express()
 const port = 3000
