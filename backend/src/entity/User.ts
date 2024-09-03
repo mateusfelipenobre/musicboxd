@@ -21,4 +21,5 @@ export class User {
 
     @ManyToOne(() => Role, role => role.users)
     role!: Role
+    
  }

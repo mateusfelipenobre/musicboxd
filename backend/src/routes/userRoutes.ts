@@ -7,8 +7,7 @@ import bcrypt from 'bcryptjs'
 
 const router = Router()
 
-router.use(authenticateJWT)
-
+//router.use(authenticateJWT)
 
 router.post('/', async (req, res) => {
   const { name, username, email, password, role } = req.body
