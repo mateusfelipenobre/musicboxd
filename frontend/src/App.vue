@@ -16,3 +16,23 @@ const userStore = useUserStore()
     <RodaPe />
   </div>
 </template>
+
+ <style>
+  *{
+   /*background-color: black; */
+    font-family: Montserrat;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 30px;
+  }
+  h2 {
+  color: white;
+}
+</style>

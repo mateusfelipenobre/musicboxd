@@ -41,7 +41,7 @@ const albumName = ref('');
 const artist = ref('');
 const year = ref('');
 const review = ref('');
-const rating = ref(''); // Nova variável para a avaliação
+const rating = ref(''); 
 const loading = ref(false);
 const error = ref<string | null>(null);
 const emit = defineEmits<{ (e: 'newReview', newReview: any): void }>();
@@ -65,20 +65,20 @@ async function handleSubmit() {
         artist: artist.value,
         year: year.value,
         review: review.value,
-        rating: rating.value, // Inclui o valor da avaliação
+        rating: rating.value, 
       },
       { headers }
     );
 
-    // Emitir o evento com os dados da nova crítica
+    
     emit('newReview', response.data.data);
 
-    // Limpar os campos
+  
     albumName.value = '';
     artist.value = '';
     year.value = '';
     review.value = '';
-    rating.value = ''; // Limpa a avaliação
+    rating.value = ''; 
   } catch (err) {
     if (axios.isAxiosError(err)) {
       error.value = err.response?.data?.message || 'Erro ao enviar a crítica';
