@@ -2,7 +2,7 @@ import express from 'express';
 import userRoutes from './routes/userRoutes';
 import authRoutes from './routes/authRoutes';
 import roleRoutes from './routes/roleRoutes';
-import reviewRoutes from './routes/reviewRoutes'; // Adicionando rotas de críticas
+import reviewRoutes from './routes/reviewRoutes'; 
 import cors from "cors";
 import { AppDataSource } from './DataSource';
 
@@ -19,7 +19,7 @@ async function startServer() {
     app.use('/', authRoutes);
     app.use('/users', userRoutes);
     app.use('/roles', roleRoutes);
-    app.use('/reviews', reviewRoutes); // Adicionando a rota de críticas
+    app.use('/reviews', reviewRoutes); 
     
     app.listen(port, () => {
       console.log(`Servidor escutando a porta ${port} em http://localhost:${port}`);
