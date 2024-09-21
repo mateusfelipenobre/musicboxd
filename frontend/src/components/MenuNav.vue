@@ -11,3 +11,23 @@
     <router-link v-else to="/login">Login</router-link>
   </div>
 </template>
+
+<script setup lang="ts">
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/userStore';
+
+// Store e Router
+const userStore = useUserStore();
+const router = useRouter();
+
+
+const isAuthenticated = computed(() => userStore.isAuthenticated);
+const username = computed(() => userStore.username);
+
+
+function handleLogout() {
+  userStore.logout();
+  router.push('/login');
+}
+</script>
