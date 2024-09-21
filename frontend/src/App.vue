@@ -1,30 +1,18 @@
+<script setup lang="ts">
+import { RouterLink } from 'vue-router';
+import { useUserStore } from './stores/userStore';
+import MenuNav from './components/MenuNav.vue';  
+import RodaPe from './components/RodaPe.vue';    
+
+const logo_src = "/img/logo.png";
+const app_name = "MusicBoxd";
+const userStore = useUserStore()
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <MenuNav />
+    <router-view/>
+    <RodaPe />
+  </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>

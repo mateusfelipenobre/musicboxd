@@ -1,25 +1,45 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '@/pages/HomeView.vue'
+import LoginPage from '@/pages/LoginPage.vue'
+import AdmPage from '@/pages/AdmPage.vue'
+import TimeLine from '@/pages/TimeLine.vue'
+import { useUserStore } from '@/stores/userStore'
 
-const routes: Array<RouteRecordRaw> = [
+const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    component: HomeView 
   },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  { path: '/login', component: LoginPage },
+  { path: '/adm', component: AdmPage, meta: { requiresAuth: true, requiresAdmin: true } },
+  { path: '/timeline', component: TimeLine, meta: { requiresAuth: true } }
 ]
 
-const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+export const router = createRouter({
+  history: createWebHistory(),
   routes
 })
 
-export default router
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore()
+  const role = userStore.user?.role?.name
+
+  if (to.meta.requiresAuth && !userStore.isAuthenticated) {
+    return next('/login')
+  }
+
+  if (to.meta.requiresAdmin && role !== 'admin') {
+    return next('/')
+  }
+
+  if (to.path === '/login' && userStore.isAuthenticated) {
+    if (role === 'admin') {
+      return next('/adm')
+    } else {
+      return next('/timeline')
+    }
+  }
+
+  next()
+})
+
