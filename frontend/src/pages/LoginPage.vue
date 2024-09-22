@@ -5,7 +5,7 @@
       <div v-if="exception" class="alert alert-danger">
         {{ exception.message }}
       </div>
-      <form v-if="!loading" @submit.prevent="authenticate" class="login-form">
+      <form @submit.prevent="authenticate" class="login-form">
         <div class="form-group">
           <label for="usernameInput">Nome de usuário:</label>
           <input
@@ -33,13 +33,9 @@
             A senha é obrigatória
           </div>
         </div>
-        <div class="form-group">
-          <input type="submit" class="login-button" value="Enviar" />
-        </div>
+        <input type="submit" class="login-button" value="Enviar" />
       </form>
-      <p v-else>
-        Esperando resposta do servidor...
-      </p>
+      <p v-if="loading">Esperando resposta do servidor...</p>
     </div>
   </div>
 </template>
@@ -63,22 +59,10 @@ const router = useRouter();
 const userStore = useUserStore();
 
 async function authenticate() {
-  // Limpa os erros anteriores
-  usernameError.value = false;
-  passwordError.value = false;
-  
-  // Validação simples dos campos de entrada
-  if (!username.value) {
-    usernameError.value = true;
-  }
-  if (!password.value) {
-    passwordError.value = true;
-  }
-  
-  // Se houver erros, parar a função
-  if (usernameError.value || passwordError.value) {
-    return;
-  }
+  usernameError.value = !username.value;
+  passwordError.value = !password.value;
+
+  if (usernameError.value || passwordError.value) return;
 
   try {
     loading.value = true;
@@ -90,21 +74,11 @@ async function authenticate() {
     });
 
     const { jwt, user } = data.data;
-
     localStorage.setItem('token', jwt);
-
-    // Certifique-se de enviar o token nas requisições subsequentes
     api.defaults.headers.common['Authorization'] = `Bearer ${jwt}`;
-
-    // Atualiza o estado do usuário no store
     userStore.authenticaded(user, jwt);
-
-    // Redireciona para a rota baseada no papel do usuário
-    if (user.role.name === 'admin') {
-      router.push('/adm');
-    } else {
-      router.push('/timeline');
-    }
+    
+    router.push(user.role.name === 'admin' ? '/adm' : '/timeline');
   } catch (e) {
     if (isAxiosError(e) && isApplicationError(e.response?.data)) {
       exception.value = e.response?.data;
@@ -121,7 +95,6 @@ async function authenticate() {
   }
 }
 </script>
-
 
 <style scoped>
 .login-container {
