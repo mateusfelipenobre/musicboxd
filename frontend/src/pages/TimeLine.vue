@@ -38,3 +38,21 @@ onMounted(() => {
   fetchCritiques();
 });
 </script>
+<style scoped>
+.timeline-container {
+  display: flex;
+  gap: 20px;
+  padding: 5px 10px;
+}
+
+.form-container {
+  flex: 1; 
+  max-width: 600px; 
+}
+
+.publi-container {
+  flex: 2; 
+  max-width: 600px; 
+  padding: 20px; 
+}
+</style>
