@@ -90,3 +90,62 @@ async function handleSubmit() {
   }
 }
 </script>
+
+<style scoped>
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+}
+
+.album-form {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  color: white;
+  font-size: 14px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #eb7f19;
+  background-color: transparent;
+  color: white;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #ccc;
+}
+
+textarea {
+  resize: none;
+}
+
+.submit-button {
+  background-color: #eb7f19;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #d47017;
+}
+</style>
