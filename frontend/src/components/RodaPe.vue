@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-    <p>Mateus Felipe &copy; Desenvolvimento e Design 2024</p>
+    <p>Mateus Felipe e Thais Alves &copy; Desenvolvimento e Design 2024</p>
    </div> 
 </template>
 
