@@ -27,24 +27,40 @@
         <label for="review">Review</label>
         <textarea id="review" v-model="review" placeholder="Digite sua review" rows="6" required></textarea>
       </div>
-      <button type="submit" class="submit-button" :disabled="loading">Publicar</button>
+      <button type="submit" class="submit-button" :disabled="loading">{{ isEditing ? 'Atualizar' : 'Publicar' }}</button>
       <div v-if="error" class="error-message">{{ error }}</div>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue';
+import { ref, watch, defineProps, defineEmits } from 'vue';
 import axios from 'axios';
 
+const props = defineProps<{ selectedReview: any | null }>();
 const albumName = ref('');
 const artist = ref('');
 const year = ref('');
 const review = ref('');
-const rating = ref(''); 
+const rating = ref('');
 const loading = ref(false);
 const error = ref<string | null>(null);
-const emit = defineEmits<{ (e: 'newReview', newReview: any): void }>();
+const isEditing = ref(false);
+
+const emit = defineEmits<{ (e: 'newReview', newReview: any): void, (e: 'updatedReview', updatedReview: any): void }>();
+
+watch(props, (newProps) => {
+  if (newProps.selectedReview) {
+    albumName.value = newProps.selectedReview.albumName;
+    artist.value = newProps.selectedReview.artist;
+    year.value = newProps.selectedReview.year;
+    review.value = newProps.selectedReview.review;
+    rating.value = newProps.selectedReview.rating;
+    isEditing.value = true;
+  } else {
+    resetForm();
+  }
+});
 
 async function handleSubmit() {
   loading.value = true;
@@ -58,27 +74,29 @@ async function handleSubmit() {
 
     const headers = { Authorization: `Bearer ${token}` };
 
-    const response = await axios.post(
-      'http://localhost:3000/reviews',
-      {
+    if (isEditing.value && props.selectedReview) {
+      const response = await axios.put(`http://localhost:3000/reviews/${props.selectedReview.id}`, {
         albumName: albumName.value,
         artist: artist.value,
         year: year.value,
         review: review.value,
-        rating: rating.value, 
-      },
-      { headers }
-    );
+        rating: rating.value
+      }, { headers });
 
-    
-    emit('newReview', response.data.data);
+      emit('updatedReview', response.data.data);
+    } else {
+      const response = await axios.post('http://localhost:3000/reviews', {
+        albumName: albumName.value,
+        artist: artist.value,
+        year: year.value,
+        review: review.value,
+        rating: rating.value
+      }, { headers });
 
-  
-    albumName.value = '';
-    artist.value = '';
-    year.value = '';
-    review.value = '';
-    rating.value = ''; 
+      emit('newReview', response.data.data);
+    }
+
+    resetForm();
   } catch (err) {
     if (axios.isAxiosError(err)) {
       error.value = err.response?.data?.message || 'Erro ao enviar a crítica';
@@ -89,7 +107,17 @@ async function handleSubmit() {
     loading.value = false;
   }
 }
+
+function resetForm() {
+  albumName.value = '';
+  artist.value = '';
+  year.value = '';
+  review.value = '';
+  rating.value = '';
+  isEditing.value = false;
+}
 </script>
+
 
 <style scoped>
 .form-container {
