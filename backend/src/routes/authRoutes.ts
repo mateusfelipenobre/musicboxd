@@ -50,7 +50,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// GET /logout - Simula um logout
 router.get('/logout', (req, res) => {
   res.status(200).json({
     data: {

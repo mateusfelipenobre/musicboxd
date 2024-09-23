@@ -19,5 +19,5 @@ export class User {
   password!: string;
 
   @ManyToOne(() => Role, (role) => role.users)
-  role!: Role; // Mantém a relação com o Role
+  role!: Role; 
 }

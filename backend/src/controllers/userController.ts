@@ -10,7 +10,6 @@ export const getUsersByRole = async (req: Request, res: Response) => {
   const userRepository = AppDataSource.getRepository(User);
   console.log("uuiiiii");
   try {
-    console.log("pombaaaaa");
     const users = await userRepository.find({
       where: { role: { name: 'user' } },
       relations: ['role'],
@@ -20,7 +19,6 @@ export const getUsersByRole = async (req: Request, res: Response) => {
     console.log("res", res);
   } catch (error) {
     console.error(error);
-    console.log("chegooou");
     res.status(500).json({ message: 'Erro ao buscar usuários' });
   }
 };

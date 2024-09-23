@@ -18,7 +18,7 @@ import axios from 'axios';
 const critiques = ref<any[]>([]);
 const selectedReview = ref<any | null>(null);
 
-// Configuração do Axios para incluir o token JWT
+
 const token = localStorage.getItem('token');
 if (token) {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
