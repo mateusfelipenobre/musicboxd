@@ -22,17 +22,17 @@ Rede social onde o usuário pode pesquisar um álbum de música, escrever uma re
 
 -Usuário
 
--Álbum
+-Papel de usuário
 
--Resenha
+-Review
 
 ## :triangular_flag_on_post:	 Principais funcionalidades da aplicação
 
-Usuário não registrado: poderão ver os álbuns e as resenhas feitos por usuários registrados.
+Usuário não registrado: poderão ver a Home da aplicação.
 
-Usuário registrado: pode listar os álbuns e seus detalhes, assim como usuários não registrados, porém podem escrever resenhas sobre os álbuns.
+Usuário registrado: Pode escrever resenhas sobre os álbuns, exclui-lás e editá-las.
 
-O adminstrador: pode adicionar, remover e editar os álbuns.
+O adminstrador: pode adicionar, remover e editar usuários.
 
 
 ## :desktop_computer: Tecnologias e frameworks utilizados
@@ -53,9 +53,9 @@ Express
 
 | Entidade| Criação | Leitura | Atualização | Remoção |
 | --- | --- | --- | --- | --- |
-| Álbum | X |  X  | X | X |
-| Resenha | X |  X  |  X | X |
-| Usuário |  |    |  |  |
+| Role |  |    |  | |
+| Review | X |  X  |  X | X |
+| Usuário | x |  x  | x | x |
 
 
 
@@ -63,10 +63,13 @@ Express
 
 | Método HTTP | URL |
 | --- | --- |
-| POST | auth/local|
-| GET | /user/me|
-| GET | API/Álbuns|
-| GET | /api/álbuns/{id}|
-| POST | /api/álbuns |
-| PUT | /api/álbuns/{id} |
-| Delete | /api/Álbuns/{id} |
+| POST | api/users| admin
+| GET | /api/users| admin 
+| PUT | /api/users/admin |
+| Delete | /api/users/admin |
+| GET | API/review|user|
+| POST | /api/review| user
+| PUT | /api/review/ user |
+| Delete | /api/review/user |
+
+
