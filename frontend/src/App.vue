@@ -19,7 +19,7 @@ const userStore = useUserStore()
 
  <style>
   *{
-    background-color: black;  
+    background-color: black; 
     font-family: Montserrat;
     padding: 0;
     margin: 0;
