@@ -1,6 +1,6 @@
 # :checkered_flag: MusicBoxd
 
-Rede social onde o usuário pode escrever uma resenha, editá-la e apagá-la caso queira.
+Rede social sobre música onde o usuário pode escrever uma resenha de um álbum, editá-la e apagá-la.
 
 ## :technologist: Membros da equipe
 
